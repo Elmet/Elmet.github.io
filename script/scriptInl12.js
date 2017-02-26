@@ -1,7 +1,8 @@
 let btnGet = document.getElementById('btn');
 let worldPopulationCounter = 0;
 let populationCounter = 0;
-let popList = [];
+let lowPopulation = 0;
+let lowPopCountry = '';
 btnGet.addEventListener('click', function () {
     let url = 'http://forverkliga.se/JavaScript/api/simple.php?world=whatever';
     fetch(url).then(function (response) {
@@ -46,24 +47,16 @@ function showFemaleZimbabwe(jsonData) {
 }
 // Vilket land har minst befolkning?
 function fewestPopulation(jsonData) {
-    let dataList = jsonData.forEach(function (obj) {
-            obj.sort(function (a, b) {
-                return a.population - b.population
-            });
-        })
-        //popList.sort(function (a, b) {
-        //return a.population - b.population
-        //};
-        /*obj => ({
-            obj.population.sort(function (a, b) {
-                return a.population - b.population
-            });
-        })*/
-        //document.getElementById('divPop').innerHTML = sortPopulation;
-        //document.getElementById('a4').innerHTML = sortPopulation[0];
-        /* {
-            
-
-
-*/
+    let array = jsonData;
+    for (let x of jsonData) {
+        lowPopulation = Math.min.apply(Math, array.map(function (o) {
+            return o.population;
+        }));
+        console.log(lowPopulation);
+        if (x.population === lowPopulation) {
+            lowPopCountry = x.name;
+            console.log(lowPopCountry)
+        }
+    }
+    let answerQ4 = document.getElementById('a4').innerHTML = lowPopCountry;
 }
