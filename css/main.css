@@ -1,0 +1,39 @@
+body {
+    background-color: dimgray;
+    height: 100%;
+    color: dimgray;
+}
+
+.border {
+    height: 100%;
+    margin-top: 10%;
+    padding-top: 3%;
+    background-color: mistyrose;
+    margin-bottom: 10%;
+    padding-bottom: 3%;
+}
+
+h3 {
+    font-family: 'Gruppo', cursive;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+}
+
+h5 {
+    font-family: 'Gruppo', cursive;
+    font-family: 'Poiret One', cursive;
+    font-weight: bold;
+    padding-bottom: 3%;
+}
+
+#btnSendEmail {
+    background-color: palevioletred;
+    color: white;
+    border-radius: 5%;
+    border-color: mistyrose;
+    border: 1px;
+}
+
+.inActive {
+    background-color: white;
+}
