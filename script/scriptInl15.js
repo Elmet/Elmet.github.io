@@ -9,23 +9,28 @@ class AddApp extends React.Component {
         this.inputChangeAndAdd = this.inputChangeAndAdd.bind(this);
     }
     inputChangeAndAdd(event) {
-        console.log('inputChangeAndAdd');
+        console.log("1 inputValue1"+this.state.inputValue1 + "inputValue2" + this.state.inputValue2 + "result"+this.state.result +"event" +event.target.value);
+        if (event.target.id = "inputValue1"){
+        //console.log('inputChangeAndAdd');
         this.setState({
-            inputValue1: event.target.value
-            , inputValue2: event.target.value
-            , result: inputValue1 + inputValue2
+            inputValue1: event.target.value   
         });
+        }
+        if (event.target.id = "inputValue2"){
+             this.setState({
+            inputValue2: event.target.value
+        });
+        }
+        console.log("2 inputValue1"+this.state.inputValue1 + "inputValue2" + this.state.inputValue2 + "result"+this.state.result +"event" +event.target.value);
     }
-    render() {
+    render() { 
+        let sumsum=(this.state.inputValue2-0)+(this.state.inputValue1-0);
         return ( < div id = "addApp" > < NumbersToAdd changeEvent = {
                 this.inputChangeAndAdd
             }
-            /> < Sum sum = {
-                this.state.result
-            }
-            />
-            < /div>);
-    }
+            /> < Sum sum = {sumsum}
+        /> < /div > );
+}
 }
 class NumbersToAdd extends React.Component {
     render() {
@@ -41,14 +46,14 @@ class NumbersToAdd extends React.Component {
             onChange = {
                 this.props.changeEvent
             }
-            />  < /form>)
+            />  < /form > )
     }
 }
 class Sum extends React.Component {
-    render() {
-        return ( < div id = "sum" > {
-            this.props.sum
-        } < /div>)
-    }
-}
-ReactDOM.render( < AddApp / > , document.getElementById('addApp'));
+        render() {
+            return ( < div id = "sum" > 
+                        {this.props.sum}
+                < /div>)
+            }
+        }
+        ReactDOM.render( < AddApp / > , document.getElementById('addApp'));
