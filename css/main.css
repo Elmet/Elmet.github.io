@@ -37,3 +37,24 @@ h5 {
 .inActive {
     background-color: white;
 }
+
+#addApp {
+    background-color: white;
+    padding: 5%;
+}
+
+.input {
+    border: 2px solid grey;
+    padding: 10px;
+    width: 50px;
+    display: inline-block;
+    text-align: center;
+}
+
+.result {
+    border: 2px solid grey;
+    padding: 10px;
+    width: 50px;
+    display: inline-block;
+    text-align: center;
+}

@@ -1,59 +1,68 @@
 class AddApp extends React.Component {
     constructor(props) {
         super(props);
+        
         this.state = {
-            inputValue1: ''
-            , inputValue2: ''
-            , result: ''
-        }
-        this.inputChangeAndAdd = this.inputChangeAndAdd.bind(this);
+            input1: 0,
+            input2: 0,
+            result: 0,
+            errorMessage: ''
+        };  
+        
+        this.inputChangedThenAdd = this.inputChangedThenAdd.bind(this);
+        this.add = this.add.bind(this);
     }
-    inputChangeAndAdd(event) {
-        console.log("1 inputValue1"+this.state.inputValue1 + "inputValue2" + this.state.inputValue2 + "result"+this.state.result +"event" +event.target.value);
-        if (event.target.id = "inputValue1"){
-        //console.log('inputChangeAndAdd');
+    
+    inputChangedThenAdd() {
+        let value1 = document.getElementById('input1').value;
+        let value2 = document.getElementById('input2').value;
+        
         this.setState({
-            inputValue1: event.target.value   
-        });
-        }
-        if (event.target.id = "inputValue2"){
-             this.setState({
-            inputValue2: event.target.value
-        });
-        }
-        console.log("2 inputValue1"+this.state.inputValue1 + "inputValue2" + this.state.inputValue2 + "result"+this.state.result +"event" +event.target.value);
+            input1: value1,
+            input2: value2
+        }, () => this.add()); 
     }
-    render() { 
-        let sumsum=(this.state.inputValue2-0)+(this.state.inputValue1-0);
-        return ( < div id = "addApp" > < NumbersToAdd changeEvent = {
-                this.inputChangeAndAdd
-            }
-            /> < Sum sum = {sumsum}
-        /> < /div > );
+    
+    
+    add(){
+        let value1 = parseFloat(this.state.input1);
+        let value2 = parseFloat(this.state.input2);
+        
+        if(Number.isNaN(value1) || Number.isNaN(value2))
+            { this.setState({errorMessage: 'Tyvärr endast nummer(heltal) är tillåtna', result: '?' });
+        }
+        
+        else
+            { 
+            let sum = 0; 
+            sum = value1 + value2; 
+         
+            this.setState({ result: sum, errorMessage: ''});
+        }
+    }
+        
+    render(){
+        return( 
+            <div><h2>Addera</h2>
+            <form>
+                <input className='input' id='input1' value={this.state.input1} onChange={this.inputChangedThenAdd} /><span> + </span>
+                <input className='input' id='input2' value={this.state.input2} onChange={this.inputChangedThenAdd} /><span> = </span>
+                <Results result={this.state.result} />
+                </form>
+                <p> {this.state.errorMessage}</p>
+            </div>
+        );
+    }
 }
-}
-class NumbersToAdd extends React.Component {
+
+
+class Results extends React.Component {
     render() {
-        return ( < form > < input id = "inputValue1"
-            type = "number"
-            placeholder = "Mata in ett första tal till din addition"
-            onChange = {
-                this.props.changeEvent
-            }
-            /> < input id = "inputValue2"
-            type = "number"
-            placeholder = "Mata in nästa tal till din addition"
-            onChange = {
-                this.props.changeEvent
-            }
-            />  < /form > )
+        return ( 
+            <input className='result' value={this.props.result} />
+        );
     }
 }
-class Sum extends React.Component {
-        render() {
-            return ( < div id = "sum" > 
-                        {this.props.sum}
-                < /div>)
-            }
-        }
-        ReactDOM.render( < AddApp / > , document.getElementById('addApp'));
+
+ReactDOM.render(<AddApp />, document.getElementById('addApp')
+);
