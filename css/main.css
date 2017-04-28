@@ -58,3 +58,54 @@ h5 {
     display: inline-block;
     text-align: center;
 }
+
+#headline {
+    font-family: 'Verdana';
+    color: white;
+}
+
+#loadMessage {
+    font-family: 'Verdana';
+    font-style: italic;
+    color: white;
+}
+
+.countryFacts {
+    font-family: 'Verdana';
+    color: white;
+}
+
+th {
+    font-family: 'Verdana';
+    font-weight: bold;
+    text-align: left;
+    border-bottom: solid pink 2px;
+}
+
+td {
+    font-family: 'Verdana';
+    padding-left: 10px;
+    padding-right: 25px;
+}
+
+table {
+    border-spacing: 10px;
+}
+
+#sum-row {
+    height: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: white;
+    background-color: pink;
+    border-top: dotted 4px palevioletred;
+    text-align: center;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+button {
+    font-family: 'Verdana';
+    color: white;
+    background-color: palevioletred;
+}
